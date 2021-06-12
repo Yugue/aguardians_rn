@@ -1,25 +1,24 @@
 import React from 'react';
-import { ThemeProvider, Button } from 'react-native-elements';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ThemeProvider, Header, colors } from 'react-native-elements';
+import { theme } from './Theme/theme';
 
-import theme from './Theme/theme';
+import AuthSection from './Components/LoginSignup/AuthSection';
 
 // Your App
 const App = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <Button title="My B235utton" />
-        <Button title="My 2nd Button" />
+        <Header
+          backgroundColor={theme.colors.black} 
+          leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
+          centerComponent={{ text: 'Aguardians', style: { color: '#fff' } }}
+          rightComponent={{ icon: 'home', color: '#fff' }}
+        />
+        <AuthSection />
       </ThemeProvider>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 

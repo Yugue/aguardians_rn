@@ -1,6 +1,6 @@
 export const theme = {
-  Button: {
-    raised: true,
+  colors: {
+    black: '#3E3E3E',
   },
 };
 
