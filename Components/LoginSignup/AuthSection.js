@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Text, ButtonGroup } from 'react-native-elements';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ButtonGroup } from 'react-native-elements';
+import { Title, Paragraph, Card } from 'react-native-paper';
 import { View } from "react-native";
 import Login from './Login';
 import Signup from './Signup';
@@ -14,7 +14,11 @@ const AuthSection = () => {
   }
 
   return (
-    <View>
+    <View style={{marginHorizontal: 10}}>
+      <Title style={{textAlign: 'center', marginVertical: 25}}>Aguardians</Title>
+      <Paragraph style={{textAlign: 'center', marginBottom: 25}}>Free accompanying services for the asian communities.
+        You can use this service for entirely free of charge,
+        or sign up as a volunteer to help people around you.</Paragraph>
       <ButtonGroup
         onPress={updateIndex}
         selectedIndex={selectedButton}

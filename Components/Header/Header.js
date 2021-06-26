@@ -13,9 +13,12 @@ const HeaderMain = () => {
     setselectedDrawer(!selectedDrawer)
   }
 
+  // If logged in show drawer
+  // If logged in show postal code
+  
   return (
     <Fragment>
-      <Appbar.Header>
+      <Appbar.Header>        
         {selectedDrawer ? <Appbar.Action icon="window-close" onPress={handleDrawer} /> : <Appbar.Action icon="menu" onPress={handleDrawer} />}        
         <Appbar.BackAction onPress={_goBack} />
         <Appbar.Content title="Postal Code" subtitle="Subtitle" style={{alignItems: "center"}}/>

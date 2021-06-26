@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Drawer } from 'react-native-paper';
 
 const DrawerMain = () => {
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState('Home');
 
   return (
     <Drawer.Section title="My Account" style={{

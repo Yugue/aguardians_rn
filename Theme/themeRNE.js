@@ -1,6 +1,7 @@
 export const themeRNE = {
   colors: {
-    black: '#3E3E3E',
+    primary: '#3E3E3E',
+    accent: '#C4C4C4',
   },
 };
 
