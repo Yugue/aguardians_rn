@@ -1,0 +1,29 @@
+import React, { Fragment, useState } from 'react';
+import DrawerMain from '../Drawer/Drawer';
+import { Appbar } from 'react-native-paper';
+
+const HeaderMain = () => {
+  const [selectedDrawer, setselectedDrawer] = useState(false);
+
+  const _goBack = () => console.log('Went back');
+
+  const _handleSearch = () => console.log('Searching');
+
+  const handleDrawer = () => {
+    setselectedDrawer(!selectedDrawer)
+  }
+
+  return (
+    <Fragment>
+      <Appbar.Header>
+        {selectedDrawer ? <Appbar.Action icon="window-close" onPress={handleDrawer} /> : <Appbar.Action icon="menu" onPress={handleDrawer} />}        
+        <Appbar.BackAction onPress={_goBack} />
+        <Appbar.Content title="Postal Code" subtitle="Subtitle" style={{alignItems: "center"}}/>
+        <Appbar.Action icon="magnify" onPress={_handleSearch} />
+      </Appbar.Header>
+      {selectedDrawer === true && <DrawerMain/>}
+    </Fragment>
+  );
+};
+
+export default HeaderMain;
