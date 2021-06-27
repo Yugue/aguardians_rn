@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, {useState} from 'react';
 import DrawerMain from '../Drawer/Drawer';
-import { Appbar } from 'react-native-paper';
+import {Appbar} from 'react-native-paper';
+import {View} from 'react-native';
 
 const HeaderMain = () => {
   const [selectedDrawer, setselectedDrawer] = useState(false);
@@ -10,22 +11,30 @@ const HeaderMain = () => {
   const _handleSearch = () => console.log('Searching');
 
   const handleDrawer = () => {
-    setselectedDrawer(!selectedDrawer)
-  }
+    setselectedDrawer(!selectedDrawer);
+  };
 
   // If logged in show drawer
   // If logged in show postal code
-  
+
   return (
-    <Fragment>
-      <Appbar.Header>        
-        {selectedDrawer ? <Appbar.Action icon="window-close" onPress={handleDrawer} /> : <Appbar.Action icon="menu" onPress={handleDrawer} />}        
+    <View>
+      <Appbar.Header>
+        {selectedDrawer ? (
+          <Appbar.Action icon="window-close" onPress={handleDrawer} />
+        ) : (
+          <Appbar.Action icon="menu" onPress={handleDrawer} />
+        )}
         <Appbar.BackAction onPress={_goBack} />
-        <Appbar.Content title="Postal Code" subtitle="Subtitle" style={{alignItems: "center"}}/>
+        <Appbar.Content
+          title="Postal Code"
+          subtitle="Subtitle"
+          style={{alignItems: 'center'}}
+        />
         <Appbar.Action icon="magnify" onPress={_handleSearch} />
       </Appbar.Header>
-      {selectedDrawer === true && <DrawerMain/>}
-    </Fragment>
+      {selectedDrawer === true && <DrawerMain />}
+    </View>
   );
 };
 

@@ -8,7 +8,6 @@ import { themeRNP } from './Theme/themeRNP';
 import AuthSection from './Components/LoginSignup/AuthSection';
 import HeaderMain from './Components/Header/Header';
 
-// Your App
 const App = () => {
   return (
     <SafeAreaProvider>
@@ -21,6 +20,5 @@ const App = () => {
     </SafeAreaProvider>
   );
 };
-
 
 export default App;
