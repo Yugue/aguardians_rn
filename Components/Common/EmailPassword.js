@@ -42,7 +42,7 @@ const EmailPassword = ({Email, setEmail, Password, setPassword, isSubmit}) => {
         onChangeText={onChangePassword}
         style={{height: 40}}
       />
-      <HelperText type="error" visible={isSubmit && PasswordValid()}>
+      <HelperText type="error" visible={true}>
         {password_message}
       </HelperText>
     </View>

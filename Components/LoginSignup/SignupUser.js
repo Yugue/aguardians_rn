@@ -24,25 +24,37 @@ const SignupUser = () => {
   function passwordsMatch() {
     return Password === RePassword;
   }
+
   const onChangeName = data => {
     setProfile({...profile, name: data});
-  }
-
+  };
   const onChangedob = (event, selectedDate) => {
     setshowDatepicker(false);
     if (selectedDate) {
       const string = selectedDate.toISOString();
-      const dobArray = [string.slice(0, 4), string.slice(5, 7), string.slice(8,10)]
+      const dobArray = [
+        string.slice(0, 4),
+        string.slice(5, 7),
+        string.slice(8, 10),
+      ];
       setProfile({...profile, dob: dobArray});
     }
-  }
-
+  };
   function validName() {
     const name_rule = /^[a-zA-Z0-9_-]([\sa-zA-Z0-9_-]){1,18}[a-zA-Z0-9_-]$/;
     return !profile.name ?? ''.test(String(name_rule));
   }
   const name_message =
     "Name must be 3 to 20 alphanumerical characters. '-' '_' and space are allowed. Cannot start or end with a space.";
+  const onChangePhone = number => {
+    setProfile({...profile, phone: number});
+    console.log(typeof number);
+    console.log(number);
+  };
+  function validPhoneNumber() {
+    const phone_rule = new RegExp('^\\d+$');
+    return !profile.phone ?? ''.test(String(phone_rule));
+  }
 
   return (
     <View>
@@ -84,7 +96,7 @@ const SignupUser = () => {
       </HelperText>
       <List.Item
         title="Date of Birth"
-        description={("dob" in profile && profile.dob) && profile.dob.join('-')}
+        description={'dob' in profile && profile.dob && profile.dob.join('-')}
         onPress={() => setshowDatepicker(true)}
         right={props => <List.Icon {...props} icon="pencil-plus-outline" />}
       />
@@ -97,7 +109,27 @@ const SignupUser = () => {
           onChange={onChangedob}
         />
       )}
-      
+      <HelperText
+        type="error"
+        visible={isSubmit && !('dob' in profile && profile.dob)}>
+        Please input a valid date of birth
+      </HelperText>
+      <TextInput
+        mode="outlined"
+        label="Phone Number"
+        placeholder="Phone Number"
+        value={profile.phone}
+        keyboardType={'phone-pad'}
+        onChangeText={onChangePhone}
+        style={{height: 40}}
+      />
+      <HelperText
+        type="error"
+        visible={isSubmit && validPhoneNumber()}>
+        Only 0 to 9's are allowed
+      </HelperText>
+
+      <Text style={{textAlign: 'center'}}>By creating an account, you agree to Aguardians Terms and Conditions</Text>
 
       <Button
         mode="contained"
