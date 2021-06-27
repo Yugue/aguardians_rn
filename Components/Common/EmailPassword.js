@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 import {HelperText, TextInput, Text, Button} from 'react-native-paper';
 
-const EmailPassword = ({Email, setEmail, Password, setPassword}) => {
+const EmailPassword = ({Email, setEmail, Password, setPassword, isSubmit}) => {
   const onChangeEmail = Email => setEmail(Email);
   const onChangePassword = Password => setPassword(Password);
 
@@ -30,7 +30,7 @@ const EmailPassword = ({Email, setEmail, Password, setPassword}) => {
         onChangeText={onChangeEmail}
         style={{height: 40}}
       />
-      <HelperText type="error" visible={false && EmailValid()}>
+      <HelperText type="error" visible={isSubmit && EmailValid()}>
         Email address is invalid!
       </HelperText>
       <TextInput
@@ -42,7 +42,7 @@ const EmailPassword = ({Email, setEmail, Password, setPassword}) => {
         onChangeText={onChangePassword}
         style={{height: 40}}
       />
-      <HelperText type="error" visible={false && PasswordValid()}>
+      <HelperText type="error" visible={isSubmit && PasswordValid()}>
         {password_message}
       </HelperText>
     </View>

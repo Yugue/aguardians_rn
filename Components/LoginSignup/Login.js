@@ -6,6 +6,7 @@ import EmailPassword from '../Common/EmailPassword';
 const Login = () => {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
+  const [isSubmit, setisSubmit] = useState(false);
 
   return (
     <View style={{marginTop: 20}}>
@@ -14,11 +15,12 @@ const Login = () => {
         setEmail={setEmail}
         Password={Password}
         setPassword={setPassword}
+        isSubmit={isSubmit}
       />
       <Text style={{textAlign: 'center'}}>Forgot your password?</Text>
       <Button
         mode="contained"
-        onPress={() => console.log('Pressed')}
+        onPress={() => setisSubmit(true)}
         style={{
           width: 100,
           marginTop: 10,

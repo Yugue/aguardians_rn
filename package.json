@@ -11,6 +11,7 @@
     "link": "npx react-native link"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "^3.5.2",
     "antd-mobile": "^2.3.4",
     "react": "17.0.1",
     "react-native": "0.64.2",
