@@ -10,6 +10,7 @@ import {
 } from 'react-native-paper';
 import EmailPassword from '../Common/EmailPassword';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import BlankView from '../Common/BlankView';
 
 const SignupUser = () => {
   const [Email, setEmail] = useState('');
@@ -42,18 +43,17 @@ const SignupUser = () => {
   };
   function validName() {
     const name_rule = /^[a-zA-Z0-9_-]([\sa-zA-Z0-9_-]){1,18}[a-zA-Z0-9_-]$/;
-    return !profile.name ?? ''.test(String(name_rule));
+    return ('name' in profile ? name_rule.test(String(profile.name)) : false);
   }
   const name_message =
     "Name must be 3 to 20 alphanumerical characters. '-' '_' and space are allowed. Cannot start or end with a space.";
   const onChangePhone = number => {
     setProfile({...profile, phone: number});
-    console.log(typeof number);
-    console.log(number);
   };
   function validPhoneNumber() {
     const phone_rule = new RegExp('^\\d+$');
-    return !profile.phone ?? ''.test(String(phone_rule));
+    return ('phone' in profile ? phone_rule.test(String(profile.phone)) : false);
+    // return (profile.phone ?? '').test(String(phone_rule));
   }
 
   return (
@@ -61,9 +61,9 @@ const SignupUser = () => {
       <Avatar.Icon
         size={40}
         icon="image-plus"
-        style={{alignSelf: 'center', marginTop: 20}}
+        style={{alignSelf: 'center', marginTop: 10}}
       />
-      <Text style={{alignSelf: 'center'}}>Click to add profile picture</Text>
+      <Text style={{alignSelf: 'center', marginBottom: 10}}>Click to add profile picture</Text>
       <EmailPassword
         Email={Email}
         setEmail={setEmail}
@@ -80,9 +80,14 @@ const SignupUser = () => {
         onChangeText={onChangeRePassword}
         style={{height: 40}}
       />
-      <HelperText type="error" visible={isSubmit && passwordsMatch()}>
-        Passwords do not match
-      </HelperText>
+      {isSubmit && !passwordsMatch() ? (
+        <HelperText type="error" visible={true}>
+          Passwords do not match
+        </HelperText>
+      ) : (
+        <BlankView Width={10}></BlankView>
+      )}
+
       <TextInput
         mode="outlined"
         label="Name"
@@ -91,9 +96,14 @@ const SignupUser = () => {
         onChangeText={onChangeName}
         style={{height: 40}}
       />
-      <HelperText type="error" visible={isSubmit && validName()}>
-        {name_message}
-      </HelperText>
+      {isSubmit && !validName() ? (
+        <HelperText type="error" visible={true}>
+          {name_message}
+        </HelperText>
+      ) : (
+        <BlankView Width={10}></BlankView>
+      )}
+
       <List.Item
         title="Date of Birth"
         description={'dob' in profile && profile.dob && profile.dob.join('-')}
@@ -109,11 +119,14 @@ const SignupUser = () => {
           onChange={onChangedob}
         />
       )}
-      <HelperText
-        type="error"
-        visible={isSubmit && !('dob' in profile && profile.dob)}>
-        Please input a valid date of birth
-      </HelperText>
+      {isSubmit && !('dob' in profile && profile.dob) ? (
+        <HelperText type="error" visible={true}>
+          Please input a valid date of birth
+        </HelperText>
+      ) : (
+        <BlankView Width={10}></BlankView>
+      )}
+
       <TextInput
         mode="outlined"
         label="Phone Number"
@@ -123,13 +136,17 @@ const SignupUser = () => {
         onChangeText={onChangePhone}
         style={{height: 40}}
       />
-      <HelperText
-        type="error"
-        visible={isSubmit && validPhoneNumber()}>
-        Only 0 to 9's are allowed
-      </HelperText>
+      {isSubmit && !validPhoneNumber() ? (
+        <HelperText type="error" visible={true}>
+          Only 0 to 9's are allowed
+        </HelperText>
+      ) : (
+        <BlankView Width={10}></BlankView>
+      )}
 
-      <Text style={{textAlign: 'center'}}>By creating an account, you agree to Aguardians Terms and Conditions</Text>
+      <Text style={{textAlign: 'center', marginVertical: 15}}>
+        By creating an account, you agree to Aguardians Terms and Conditions
+      </Text>
 
       <Button
         mode="contained"

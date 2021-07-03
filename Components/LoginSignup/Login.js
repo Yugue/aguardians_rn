@@ -17,7 +17,7 @@ const Login = () => {
         setPassword={setPassword}
         isSubmit={isSubmit}
       />
-      <Text style={{textAlign: 'center'}}>Forgot your password?</Text>
+      <Text style={{textAlign: 'center', marginTop: 20}}>Forgot your password?</Text>
       <Button
         mode="contained"
         onPress={() => setisSubmit(true)}
