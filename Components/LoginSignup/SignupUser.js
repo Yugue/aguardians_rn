@@ -156,6 +156,7 @@ const SignupUser = () => {
           marginTop: 10,
           marginLeft: 'auto',
           marginRight: 'auto',
+          marginBottom: 50
         }}>
         Sign up
       </Button>

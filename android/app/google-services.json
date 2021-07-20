@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "760414248025",
+    "project_id": "aguardians-a577c",
+    "storage_bucket": "aguardians-a577c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760414248025:android:bd5f78813bf4e2ca95e548",
+        "android_client_info": {
+          "package_name": "com.pllanet.aguardians"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760414248025-1gcngvprlvsn68gpo5a2qke8rbdpj2os.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo7rWkxaQcX7Z3rnB-LMDnEH28xWqe5SM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760414248025-1gcngvprlvsn68gpo5a2qke8rbdpj2os.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
