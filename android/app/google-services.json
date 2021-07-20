@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:760414248025:android:bd5f78813bf4e2ca95e548",
+        "mobilesdk_app_id": "1:760414248025:android:1859edeceec6fe2995e548",
         "android_client_info": {
-          "package_name": "com.pllanet.aguardians"
+          "package_name": "com.aguardians"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "760414248025-8pk0au8bfu9i93k86u34mfkg8aqrebk1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aguardians",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
         {
           "client_id": "760414248025-1gcngvprlvsn68gpo5a2qke8rbdpj2os.apps.googleusercontent.com",
           "client_type": 3
@@ -29,6 +37,13 @@
             {
               "client_id": "760414248025-1gcngvprlvsn68gpo5a2qke8rbdpj2os.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "760414248025-sev4u7q73rd9hpvt3aot0hc0j25a1ik9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pllanet.aguardians"
+              }
             }
           ]
         }
