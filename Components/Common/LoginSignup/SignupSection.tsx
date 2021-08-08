@@ -10,8 +10,8 @@ import {
 } from 'react-native-paper';
 import EmailPassword from './EmailPassword';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import BlankView from './BlankView';
-import {Profile} from '../../utils/types/Profile';
+import BlankView from '../BlankView';
+import {Profile} from '../../../utils/types/Profile';
 
 const SignupSection = ({isSubmit}: {isSubmit: boolean}) => {
   const [Email, setEmail] = useState('');
@@ -22,7 +22,7 @@ const SignupSection = ({isSubmit}: {isSubmit: boolean}) => {
   const [showDatepicker, setshowDatepicker] = useState(false);
 
   const onChangeRePassword = (password: string) => setRePassword(password);
-  function passwordsMatch():boolean {
+  function passwordsMatch(): boolean {
     return Password === RePassword;
   }
 
@@ -41,7 +41,7 @@ const SignupSection = ({isSubmit}: {isSubmit: boolean}) => {
       setProfile({...profile, dob: dobArray});
     }
   };
-  function validName():boolean {
+  function validName(): boolean {
     const name_rule = /^[a-zA-Z0-9_-]([\sa-zA-Z0-9_-]){1,18}[a-zA-Z0-9_-]$/;
     return 'name' in profile ? name_rule.test(String(profile.name)) : false;
   }
@@ -50,7 +50,7 @@ const SignupSection = ({isSubmit}: {isSubmit: boolean}) => {
   const onChangePhone = (number: string) => {
     setProfile({...profile, phone: number});
   };
-  function validPhoneNumber():boolean {
+  function validPhoneNumber(): boolean {
     const phone_rule = new RegExp('^\\d+$');
     return 'phone' in profile ? phone_rule.test(String(profile.phone)) : false;
   }

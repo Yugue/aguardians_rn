@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {Button} from 'react-native-paper';
-import SignupSection from '../Common/SignupSection';
+import SignupSection from '../Common/LoginSignup/SignupSection';
 
 const SignupVolunteer = () => {
   const [isSubmit, setisSubmit] = useState(false);
