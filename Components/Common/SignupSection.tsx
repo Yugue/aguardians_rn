@@ -8,27 +8,28 @@ import {
   Button,
   List,
 } from 'react-native-paper';
-import EmailPassword from '../Common/EmailPassword';
+import EmailPassword from './EmailPassword';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import BlankView from '../Common/BlankView';
+import BlankView from './BlankView';
+import {Profile} from '../../utils/types/Profile';
 
-const SignupSection = ({isSubmit}) => {
+const SignupSection = ({isSubmit}: {isSubmit: boolean}) => {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const [RePassword, setRePassword] = useState('');
 
-  const [profile, setProfile] = useState({});
+  const [profile, setProfile] = useState({} as Profile);
   const [showDatepicker, setshowDatepicker] = useState(false);
 
-  const onChangeRePassword = password => setRePassword(password);
-  function passwordsMatch() {
+  const onChangeRePassword = (password: string) => setRePassword(password);
+  function passwordsMatch():boolean {
     return Password === RePassword;
   }
 
-  const onChangeName = data => {
-    setProfile({...profile, name: data});
+  const onChangeName = (changedName: string) => {
+    setProfile({...profile, name: changedName});
   };
-  const onChangedob = (event, selectedDate) => {
+  const onChangedob = (event: Event, selectedDate?: Date | undefined) => {
     setshowDatepicker(false);
     if (selectedDate) {
       const string = selectedDate.toISOString();
@@ -40,16 +41,16 @@ const SignupSection = ({isSubmit}) => {
       setProfile({...profile, dob: dobArray});
     }
   };
-  function validName() {
+  function validName():boolean {
     const name_rule = /^[a-zA-Z0-9_-]([\sa-zA-Z0-9_-]){1,18}[a-zA-Z0-9_-]$/;
     return 'name' in profile ? name_rule.test(String(profile.name)) : false;
   }
   const name_message =
     "Name must be 3 to 20 alphanumerical characters. '-' '_' and space are allowed. Cannot start or end with a space.";
-  const onChangePhone = number => {
+  const onChangePhone = (number: string) => {
     setProfile({...profile, phone: number});
   };
-  function validPhoneNumber() {
+  function validPhoneNumber():boolean {
     const phone_rule = new RegExp('^\\d+$');
     return 'phone' in profile ? phone_rule.test(String(profile.phone)) : false;
   }
