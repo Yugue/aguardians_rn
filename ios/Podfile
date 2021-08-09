@@ -15,7 +15,6 @@ target 'aguardians' do
 
 
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'aguardiansTests' do
     inherit! :complete
