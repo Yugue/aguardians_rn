@@ -12,14 +12,16 @@ import EmailPassword from './EmailPassword';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import BlankView from '../BlankView';
 import {Profile} from '../../../utils/types/Profile';
+import auth from '@react-native-firebase/auth';
 
-const SignupSection = ({isSubmit}: {isSubmit: boolean}) => {
+const SignupSection = ({userType}: {userType: string}) => {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const [RePassword, setRePassword] = useState('');
 
   const [profile, setProfile] = useState({} as Profile);
   const [showDatepicker, setshowDatepicker] = useState(false);
+  const [isSubmit, setisSubmit] = useState(false);
 
   const onChangeRePassword = (password: string) => setRePassword(password);
   function passwordsMatch(): boolean {
@@ -53,6 +55,29 @@ const SignupSection = ({isSubmit}: {isSubmit: boolean}) => {
   function validPhoneNumber(): boolean {
     const phone_rule = new RegExp('^\\d+$');
     return 'phone' in profile ? phone_rule.test(String(profile.phone)) : false;
+  }
+
+  async function onSubmit() {
+    setisSubmit(true);
+    if (validName() && validPhoneNumber() && passwordsMatch()) {
+      try {
+        await auth().createUserWithEmailAndPassword(
+          Email,
+          Password,
+        );
+        console.log('User account created & signed in!');
+      } catch (error) {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+
+        console.error(error);
+      }
+    }
   }
 
   return (
@@ -147,6 +172,19 @@ const SignupSection = ({isSubmit}: {isSubmit: boolean}) => {
       <Text style={{textAlign: 'center', marginVertical: 15}}>
         By creating an account, you agree to Aguardians Terms and Conditions
       </Text>
+
+      <Button
+        mode="contained"
+        onPress={() => onSubmit}
+        style={{
+          width: 100,
+          marginTop: 10,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          marginBottom: 50,
+        }}>
+        Sign up
+      </Button>
     </View>
   );
 };

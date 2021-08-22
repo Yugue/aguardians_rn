@@ -4,23 +4,9 @@ import {Button} from 'react-native-paper';
 import SignupSection from '../Common/LoginSignup/SignupSection';
 
 const SignupVolunteer = () => {
-  const [isSubmit, setisSubmit] = useState(false);
-
   return (
     <View>
-      <SignupSection isSubmit={isSubmit}></SignupSection>
-      <Button
-        mode="contained"
-        onPress={() => setisSubmit(true)}
-        style={{
-          width: 100,
-          marginTop: 10,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          marginBottom: 50,
-        }}>
-        Sign up
-      </Button>
+      <SignupSection userType="volunteer"></SignupSection>
     </View>
   );
 };
